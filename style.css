@@ -1,0 +1,23 @@
+* {padding:0 none; margin:0 none; box-sizing:unset;}
+body{
+  background-image:url(./backgorund.svg); 
+  background-size:15px; display:flex; 
+  justify-content:center; align-items:center; 
+  min-height:900px;
+}
+
+#render {
+  min-width:640px;
+  min-height:600px;
+  background-color:#AAA;
+  border-radius:1px;
+  box-shadow:0px 3px 15px #000;
+}
+.cell {
+  float:left;
+}
+.pixel {
+  width:4px; 
+  height:4px;
+  background-color:#222;
+}
