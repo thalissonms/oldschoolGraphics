@@ -19,10 +19,37 @@ function startScreen () {
     0,0,1,1,1,1,0,0
     ])
     writeScreen();
+    //decimalToBinary(25)
   }
 function writeScreen () {
   console.log(memory.size)
 }
+
+/*
+  THIS FUNCTION GET A DECIMAL NUMBER AND TRANSFORM THIS IN A BINARY NUMBER
+*/
+function decimalToBinary (num) {
+  let output = []                           //DECLARE ARRAY output
+  if (num <= 255 && num >= 0 && typeof num !== Number) {
+    let decimal = num                         //GET NUM PARAM
+    let index = -1                            //DEFINE THE OUTPUT INDEX TO -1
+    let base = 2                              //DIFINE THE BASE TO 2 (BINARY)
+    while (decimal > 0){                      //VERIFY DECIMAL VALUE ->  BIGGER THAN 0? -> (YES) REPEAT / (NO) STOP
+      if (decimal%base !== 0){                //VIRIFY IF MODULOS OF 2 (BASE) ARE EQUAL 0
+        var result = 1                          // -> IF TRUE RESULT = 1
+      } else {                                  // -> IF FALSE RESULT = 0
+        var result = 0
+      }
+      decimal = decimal/base                //DIVIDED DECIMAL VALUE BY BASE VALUE
+      decimal = Math.floor(decimal)         //ROUND TO FLOOR NEW DECIMAL VALUE
+      index++                               //SET INDEX OF output WHERE WILL SAVE RESULT VALUE      
+      output[index] = result                //SAVE RESULT VALUE IN output ARRAY
+    }
+    output = output.reverse()               //REVERSE output ARRAY INDEX
+} else { output = "Numero invalado!" }                     
+  return output                           //RETURN A BINARY NUM
+}
+
 function mapBlock (n) {
   let obj = []
   for (let i = 0; i < 8; i++){
@@ -40,7 +67,7 @@ function drawScreen (where,binary){
       document.getElementById(`pixel-${paint[i]}`).style.backgroundColor = '#FFF';
     }
   }
-  console.log(binary)
+  //console.log(binary)
 }
 function makeCell (n) {
   let pixelRender = '<table style="border:5px solid #" class="cell" cellspacing="0" cellpadding="0">' 
