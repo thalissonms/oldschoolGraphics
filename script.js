@@ -1,7 +1,16 @@
 const pixelH = 320;
 const pixelV = 200;
 const cell   = 1;
+/* 
+ --------------------- FUNCTIONS ------------------------
+  # startScreen() -> Used to start the script and all functions.
+    ## render() -> Makes a table (display) with all pixels. 
+      ### makeCell(n) -> Create blocks with 8x8 bits (64 bits). Param "n": id of cell created.
 
+    ## drawScreen(w,b) -> Selects and write a cell. Param "w": What cell ID you want select; Param "b": turn on/off h the pixel: from left to right, from up to down
+      ### mapBlock(w) -> Select cell to be written. Param "w": What cell ID you want select.
+      ### decimalToBinary -> Get decimal line value and convert to binary code.    
+*/
 var memory = {
   '0Fx000':{'local':0, 'binary':[0,0,1,1,1,1,0,0,0,1,1,0,0,1,1,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,1,1,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0]},
   '0Fx001':{'local':1, 'binary':[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]}
@@ -19,7 +28,6 @@ function startScreen () {
     0,0,1,1,1,1,0,0
     ])
     writeScreen();
-    //decimalToBinary(25)
   }
 function writeScreen () {
   console.log(memory.size)
@@ -29,7 +37,7 @@ function writeScreen () {
   THIS FUNCTION GET A DECIMAL NUMBER AND TRANSFORM THIS IN A BINARY NUMBER
 */
 function decimalToBinary (num) {
-  let output = []                           //DECLARE ARRAY output
+  let output = []                             //DECLARE ARRAY output
   if (num <= 255 && num >= 0 && typeof num !== Number) {
     let decimal = num                         //GET NUM PARAM
     let index = -1                            //DEFINE THE OUTPUT INDEX TO -1
@@ -67,10 +75,9 @@ function drawScreen (where,binary){
       document.getElementById(`pixel-${paint[i]}`).style.backgroundColor = '#FFF';
     }
   }
-  //console.log(binary)
 }
 function makeCell (n) {
-  let pixelRender = '<table style="border:5px solid #" class="cell" cellspacing="0" cellpadding="0">' 
+  let pixelRender = '<table style="border:5px solid #222;" class="cell" cellspacing="0" cellpadding="0">' 
   for (let v = 0; v < pixelV; v++){
     pixelRender += '<tr>'
     for (let h = 0; h < pixelH; h++){
